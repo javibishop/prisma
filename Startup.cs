@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Prisma.Models;
 
 namespace Prisma
 {
@@ -20,6 +22,12 @@ namespace Prisma
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
+            services.AddDbContext<Context>(options => {
+                options.UseSqlServer(Configuration.GetConnectionString("DbConnectionString"));
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -35,15 +43,24 @@ namespace Prisma
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                using (var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    using (var context = scope.ServiceProvider.GetService<Context>())
+                    {
+                        context.Database.Migrate();
+                    }
+                }
             }
             else
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
+                
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
