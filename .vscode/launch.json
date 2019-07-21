@@ -8,7 +8,7 @@
             "name": "ASP.NET Core and Browser",
             "configurations": [
                 ".NET Core Launch (web)",
-                "Launch Chrome"
+                "Launch Firefox"
             ]
         }
     ],
@@ -34,15 +34,12 @@
             }
         },
         {
-            "name": "Launch Chrome",
-            "type": "chrome",
+            "name": "Launch Firefox",
+            "type": "firefox",
             "request": "launch",
-            "sourceMaps": true,
             "url": "https://localhost:5001",
             "webRoot": "${workspaceFolder}/ClientApp",
-            "runtimeArgs": [
-                "--remote-debugging-port=9222"
-            ]
+            
         },
         {
             "name": ".NET Core Attach",
