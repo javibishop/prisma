@@ -1,0 +1,11 @@
+<mat-card class="containter">
+  <mat-icon>Buscar</mat-icon>
+  <mat-form-field>
+      <input
+      matInput
+      #filtrar
+      placeholder="filtrar"
+      (keyup)="filtrarPor(filtrar.value)"
+      />
+  </mat-form-field>
+</mat-card>

@@ -1,0 +1,7 @@
+<app-filter-box (filtrar)="filtrarCompetidor($event)"></app-filter-box>
+<app-competidor-list [competidores]="competidores" (seleccionar)="seleccionarCompetidor($event)"></app-competidor-list>
+<button  mat-button
+      type="button"
+      (click)="nuevoCompetidor()">
+      Nuevo
+    </button>
