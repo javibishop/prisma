@@ -4,12 +4,6 @@ namespace Prisma.Models
 {
     public class Context : Microsoft.EntityFrameworkCore.DbContext
     {
-        //private AppSettings AppSettings { get; set; }
-        //public Context(AppSettings settings)
-        //{
-        //    this.AppSettings = settings;
-        //}
-
         public Context(DbContextOptions options) : base(options)
         {
         }
@@ -17,15 +11,6 @@ namespace Prisma.Models
         public virtual DbSet<Competidor> Competidores { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<ZonaPrecio> ZonaPrecios { get; set; }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer(this.AppSettings.DbConnectionString);
-        //    }
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Competidor>().HasOne<Marca>(c => c.Marca);

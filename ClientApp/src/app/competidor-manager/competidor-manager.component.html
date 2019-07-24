@@ -1,5 +1,5 @@
 <app-filter-box (filtrar)="filtrarCompetidor($event)"></app-filter-box>
-<app-competidor-list [competidores]="competidores" (seleccionar)="seleccionarCompetidor($event)"></app-competidor-list>
+<app-competidor-list [competidores]="competidores" (eliminar)="eliminarCompetidor($event)" (seleccionar)="seleccionarCompetidor($event)"></app-competidor-list>
 <div class="action-buttons">
   <button mat-button
           color="primary"

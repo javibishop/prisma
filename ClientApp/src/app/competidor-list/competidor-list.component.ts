@@ -10,8 +10,8 @@ import { CompetidorHttpService } from '../services/competidor-http.service';
 })
 export class CompetidorListComponent implements OnInit {
   @Input() competidores: CompetidorList[];
-  competidorSeleccionado: Competidor = null;
   @Output() seleccionar = new EventEmitter<Competidor>();
+  @Output() eliminar = new EventEmitter<Competidor>();
   @Output() seleccionarModal = new EventEmitter<Competidor>();
   columnas: string[] = ['Codigo', 'Nombre', 'Latitud', 'Marca', 'ZonaPrecio', 'Acciones'];
 
@@ -20,18 +20,14 @@ export class CompetidorListComponent implements OnInit {
   ngOnInit() {}
 
 seleccionarCompetidor(competidor: Competidor ){
-    this.competidorSeleccionado = competidor;
     this.seleccionar.emit(competidor);
   }
 
   eliminarCompetidor(competidor: Competidor) {
     var result = confirm("Esta seguro de eliminar el competidor?");
     if (result) {
-    this.competidorSeleccionado = competidor;
-    this.competidorService.delete(competidor.id).subscribe(
-      (_) => this.router.navigate(['competidores']));
+      this.eliminar.emit(competidor);
     }
   }
-  
 }
 

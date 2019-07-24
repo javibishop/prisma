@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { StateService } from '../services/state.service';
 import { CompetidorList } from '../models/competidor';
 import { CompetidorHttpService } from '../services/competidor-http.service';
@@ -56,5 +56,10 @@ export class CompetidorManagerComponent implements OnInit {
     } else {
       this.router.navigate(['competidores', 0]);
     }
-   }
+  }
+
+  eliminarCompetidor(competidor: CompetidorList) {
+    this.competidorService.delete(competidor.id).subscribe(
+      (_) => this.router.navigate(['competidores']));
+  }
 }
