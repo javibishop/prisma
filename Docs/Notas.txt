@@ -1,0 +1,24 @@
+																	Evaluacion Prisma.
+-Compilacion del codigo.
+	Realizar el clone de github desde: https://github.com/javibishop/prisma
+	Antes de compilar, es necesario modificar el archivo de settings para setear el string de conexion de base de datos. Por ende, 
+	modificar el \prisma\appsettings.json con el valor correspondiente a la base de datos local o en donde se va a ejecutar.
+	En el directorio donde se haga el clon de git, abrir un power shell de windows y ejecutar los siguientes comandos:
+		1- set ASPNETCORE_ENVIRONMENT=Developmen
+		2- dotnet run
+			Esto ejecutara la aplicacion, creara la base de datos.
+			Sino estuvia el environment en modo "Developmen", se debera correr el script de base de datos(que se encuentra en la carpeta Scripts/script db.sql) 
+			generado con EF el cual creara la estructura de base de datos y los datos de los catalogos Marcas y ZonaPrecios.
+		3-Luego abrir un navegador con la siguiente direccion: http://localhost:5000
+	
+-La arquitectura de la solucion esta creada con el template de Visual Studio 2019 ASP Net Core con Angular 7 como frontend SPA y el backend es c# y EF con 
+	una base de datos Sql Server Express 2014.
+	Este template deja en la misma solucion el frontend, cuya carpeta es ClientApp el web API de net core. Se podrian ejecutar por separados, por ejemplo con el 
+	CLI de Angular para la carpeta Client y el back con dotnet run pero este template tiene todo configurado para lanzar ambas, frontend y backend, a la vez.
+No implemente autenticacion ni tampoco compatibilidad con docker. La primera porque no he llegado a hacerlo y tampoco esta pedida y la segunda no le he usado nunca.
+El modelo de datos es segun lo pedido.
+Lo unico que no se cumplio es lo siguiente:
+		Hay dos commit, los del dia 23 de Julio, que se realizaron por el borrado de unos componentes de angular que trae el template y olvide quitarlos del app.module de Angular.
+		No pude reutilizar el editor de competidor en el modal, hice algunas pruebas y no me estaba funcionando en el modo no modal, por ende deje dos componente casi 
+		identicos, en ese caso deberia investigar mas para ver como se puede usar un componente solo para el modo modal y el no modal.
+		
