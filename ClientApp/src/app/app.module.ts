@@ -47,8 +47,7 @@ import { FilterBoxComponent } from './filter-box/filter-box.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'competidores', component: CompetidorManagerComponent },
-      { path: 'competidores/:id', component: CompetidorEditComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'competidores/:id', component: CompetidorEditComponent }
     ])
   ],
   providers: [],
