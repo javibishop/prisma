@@ -27,7 +27,9 @@ export class CompetidorList {
         public marcaId :number,
         public zonaPrecioId :number,
         public marcaCodigo :string,
-        public zonaPrecioCodigo :string,
+        public zonaPrecioCodigo: string,
+        public marcaNombre: string,
+        public zonaPrecioNombre: string,
         )
         {}
 }
